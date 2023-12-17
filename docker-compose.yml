@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  mysqldb:
+    image: mysql:8.0.33
+    container_name: MysqlServer
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=123
+    ports:
+      - 3308:3306
+    volumes:
+      - ./db:/var/lib/mysql
+    tty: true
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "mysqldb", "-uuser", "-ppass"]
+      interval: 5s  # Check the health status every 5 seconds
+      timeout: 10s  # Consider the health check failed after 10 seconds
+      retries: 5  # Allow up to 5 retries before marking the service as unhealthy
