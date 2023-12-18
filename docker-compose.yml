@@ -19,3 +19,15 @@ services:
       interval: 5s  # Check the health status every 5 seconds
       timeout: 10s  # Consider the health check failed after 10 seconds
       retries: 5  # Allow up to 5 retries before marking the service as unhealthy
+
+  # fastapi_app:
+  #   build: .
+  #   command: uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload
+  #   volumes:
+  #     - .:/usr/src/app
+  #   ports:
+  #     - "8080:8080"
+  #   depends_on:
+  #     - mysqldb
+  #   environment:
+  #     - DATABASE_URL=mysql+pymysql://admin:123@mysqldb:3306/test

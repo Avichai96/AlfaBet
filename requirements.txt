@@ -5,3 +5,6 @@ pymysql
 dependency_injector
 apscheduler
 cryptography
+pytest
+httpx
+limits

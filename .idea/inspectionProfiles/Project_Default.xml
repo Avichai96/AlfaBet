@@ -1,0 +1,36 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="7">
+            <item index="0" class="java.lang.String" itemvalue="face-capture-python" />
+            <item index="1" class="java.lang.String" itemvalue="passport-ocr-python" />
+            <item index="2" class="java.lang.String" itemvalue="israel-stay-permit-python" />
+            <item index="3" class="java.lang.String" itemvalue="israel-dl-ocr-python" />
+            <item index="4" class="java.lang.String" itemvalue="israel-id-ocr-python" />
+            <item index="5" class="java.lang.String" itemvalue="credit-card-ocr-python" />
+            <item index="6" class="java.lang.String" itemvalue="europe-cards-ocr-python" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="W292" />
+          <option value="E302" />
+          <option value="E501" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="bool.__await__" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

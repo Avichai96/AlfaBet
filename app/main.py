@@ -1,21 +1,14 @@
 # app/main.py
 
 import uvicorn
-from apscheduler.schedulers.background import BackgroundScheduler
 from fastapi import FastAPI
 from routers import event, reminder
+from middlewares import RateLimitMiddleware
 
 
 app = FastAPI()
 
-
-# scheduler = BackgroundScheduler()
-# scheduler.start()
-# scheduler.add_job(EventReminder.send_reminders, 'interval', minutes=0.5)
-
-# @app.on_event("shutdown")
-# def shutdown_scheduler():
-#     scheduler.shutdown()
+app.add_middleware(RateLimitMiddleware, limit_string="10")
 
 app.include_router(event.router)
 app.include_router(reminder.router)

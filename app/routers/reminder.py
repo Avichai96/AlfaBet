@@ -24,12 +24,12 @@ def get_reminders(db: Session = Depends(get_db)):
 
 @router.post("/signup-for-reminder/", response_model=EventReminder)
 def sign_up_for_reminder(reminder: EventReminderCreate, db: Session = Depends(get_db)):
+    db_event = Event.get_event(db, event_id=reminder.event_id)
+    if not db_event:
+        raise HTTPException(status_code=404, detail="Invalid event")
+    if db_event.event_date < datetime.utcnow():
+        raise HTTPException(status_code=400, detail="Event already passed")
     try:
-        db_event = Event.get_event(db, event_id=reminder.event_id)
-        if not db_event:
-            raise HTTPException(status_code=404, detail="Invalid event")
-        if db_event.event_date < datetime.utcnow():
-            raise HTTPException(status_code=400, detail="Event already passed")
         return EventReminder.sign_up_for_reminder(db, reminder)
     except Exception as ex:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(ex))

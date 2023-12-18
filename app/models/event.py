@@ -124,7 +124,7 @@ class Event(EventBase):
         if not events_to_delete:
             raise HTTPException(status_code=404, detail="Events not found")
 
-        deleted_events = [Event.from_orm(event).model_dump() for event in events_to_delete]
+        deleted_events = [Event.model_validate(event).model_dump() for event in events_to_delete]
 
         db.query(models.Events).filter(models.Events.id.in_(event_ids)).delete(synchronize_session=False)
         db.commit()
